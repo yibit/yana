@@ -1,0 +1,10 @@
+#!/bin/sh
+
+runner=""
+
+if test $# -gt 0; then
+    runner="./$@"
+fi
+
+make && sh ./tools/mkrunner.sh tests $runner
+

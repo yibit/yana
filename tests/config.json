@@ -1,0 +1,38 @@
+{
+
+"./rdfsa_test": {
+	"CC_bin": "rdfsa_test",
+	"C_bin_SRC_c": "../src/rdfsa.c",
+	"CC_bin_SRC_cc":  "rdfsa_test.cc",
+	"MY_COMMON_FLAGS": "-I ../include",
+	"MY_CCFLAGS": "",
+	"MY_CXXFLAGS": "-I../third-party/gtest -I../third-party/gtest/include",
+	"MY_LDFLAGS": "",
+	"MY_LIBS": "-L../src -lgtest"
+},
+
+"./fact_test": {
+	"CC_bin": "fact_test",
+	"C_bin_SRC_c": "",
+	"CC_bin_SRC_cc":  "fact_test.cc",
+	"MY_COMMON_FLAGS": "-I ../include",
+	"MY_CCFLAGS": "",
+	"MY_CXXFLAGS": "-I../third-party/gtest -I../third-party/gtest/include",
+	"MY_LDFLAGS": "",
+	"MY_LIBS": "-L../src -lgtest"
+},
+
+"./strcmp_test": {
+	"CC_bin": "strcmp_test",
+	"C_bin_SRC_c": "",
+	"CC_bin_SRC_cc":  "strcmp_test.cc",
+	"MY_COMMON_FLAGS": "-I ../include",
+	"MY_CCFLAGS": "",
+	"MY_CXXFLAGS": "-I../third-party/gtest -I../third-party/gtest/include",
+	"MY_LDFLAGS": "",
+	"MY_LIBS": "-L../src -lgtest"
+}
+
+
+}
+

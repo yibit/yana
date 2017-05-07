@@ -1,0 +1,14 @@
+*.o
+*_test
+*_test_*
+*_smaple
+*_sample_*
+.progs_conf
+*.a*
+*.so*
+*.sl*
+*.mk
+*.bak
+*~
+doc/*.md
+.DS_Store
