@@ -16,3 +16,7 @@ distclean:
 	rm -f tests/*.o tests/*_test tests/*_test_* third-party/tap/*_test
 	find . -name \*~ -type f |xargs rm -f
 	find . -name \*.bak -type f |xargs rm -f
+
+format:
+	find include src tests -name "*.[h|c]" -o -name "*.cc" |xargs -I {} clang-format -i --style=file {}
+

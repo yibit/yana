@@ -114,7 +114,7 @@ case "$TARGET_OS" in
         CXX_LD=$CXX
         CC_LD=$CC
         COMMON_FLAGS="-O2 -pthread -DOS_LINUX -fPIC"        
-        PLATFORM_LDFLAGS="-lpthread -Wl,-E -ldl"
+        PLATFORM_LDFLAGS="-lpthread -Wl,-E -ldl -rdynamic"
         PLATFORM_SHARED_CFLAGS="-fPIC"
         PLATFORM_LIBS="-ldl -lm"
         ECHO_OPT="-e"
