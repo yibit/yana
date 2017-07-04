@@ -1,0 +1,11 @@
+yana-site:
+  build: .
+  dockerfile: Dockerfile  
+  restart: always
+  ports:
+    - 9876:9876
+  #environment:
+  #  -
+  #volumes:
+  #  -
+
