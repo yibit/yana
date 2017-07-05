@@ -17,7 +17,7 @@ serve:
 	mkdocs serve -a 127.0.0.1:9877
 
 docker: build
-	docker build -t yana-site .
+	docker build --no-cache -t yana-site .
 
 docker-start:
 	docker run -d -p 9876:9876 --name=yana-site yana-site

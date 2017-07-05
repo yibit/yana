@@ -1,6 +1,7 @@
 yana-site:
   build: .
-  dockerfile: Dockerfile  
+  dockerfile: Dockerfile
+#  image: yana-site
   restart: always
   ports:
     - 9876:9876

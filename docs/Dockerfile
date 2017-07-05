@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.6
 
 MAINTAINER YANA Docker Maintainers "guiqzhang@gmail.com"
 
@@ -26,8 +26,6 @@ RUN set -ex \
     && pip install -r requirements.txt
 
 RUN set -ex \
-    && apk del --no-cache .fetch-deps \
-    wget \
 	&& rm -rf get-pip.py
 
 COPY docker-entrypoint.sh /usr/local/bin/
