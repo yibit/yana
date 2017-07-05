@@ -103,6 +103,8 @@ case "$TARGET_OS" in
         PLATFORM_LIBS="-lpthread -lodm -lcfg -lrt -lm"
         ;;
     Darwin)
+        CC=clang
+        CXX=clang++
         PLATFORM=OS_MACOSX
         COMMON_FLAGS="-DOS_MACOSX -Wall -fprofile-arcs -ftest-coverage"
         PLATFORM_SHARED_EXT=dylib
