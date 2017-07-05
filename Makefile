@@ -14,9 +14,10 @@ distclean:
 	rm -f samples/*.o samples/*_sample samples/*_sample_*
 	rm -f third-party/gtest/src/*.o third-party/tap/*.o
 	rm -f tests/*.o tests/*_test tests/*_test_* third-party/tap/*_test
+	find . -name \*.gcda -type f |xargs rm -f
+	find . -name \*.gcno -type f |xargs rm -f
 	find . -name \*~ -type f |xargs rm -f
 	find . -name \*.bak -type f |xargs rm -f
 
 format:
 	find include src tests -name "*.[h|c]" -o -name "*.cc" |xargs -I {} clang-format -i --style=file {}
-
