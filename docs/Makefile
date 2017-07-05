@@ -1,7 +1,7 @@
 
 # build and run the whole website
 start: build
-	cd site && python -m SimpleHTTPServer 9876 1> site.log 2>&1 &
+	cd _site && python -m SimpleHTTPServer 9876 1> site.log 2>&1 &
 
 build:
 	sh build.sh

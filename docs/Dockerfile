@@ -21,7 +21,7 @@ RUN  mkdir -p /home/yana/_site
 
 COPY _site /home/yana/_site/
 
-RUN	set -ex \
+RUN set -ex \
     && cd /home/yana \
     && pip install -r requirements.txt
 
