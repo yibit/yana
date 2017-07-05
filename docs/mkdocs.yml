@@ -1,7 +1,7 @@
 site_name: Yana
 copyright: 'Copyright &copy; 2017 Guiquan Zhang'
 site_author: Guiquan Zhang
-site_url:
+site_url: http://www.yana.com
 repo_url: https://github.com/yibit/yana
 
 pages:

@@ -44,7 +44,7 @@
             {{ config.copyright }}
           </div>
         {% endif %}
-            Powered by <a href="http://www.ebupt.com/" title="ebupt">http://www.ebupt.com</a>
+            Powered by <a href="{{ config.site_url }}" title="{{ config.site_url }}">{{ config.site_url }}</a>
         </div>
       {% block social %}
         {% include "partials/social.html" %}
