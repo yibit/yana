@@ -12,5 +12,6 @@
 *~
 doc/*.md
 .DS_Store
-.gcda
-.gcno
+*.gcda
+*.gcno
+*.xml

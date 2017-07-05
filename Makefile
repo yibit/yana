@@ -21,3 +21,9 @@ distclean:
 
 format:
 	find include src tests -name "*.[h|c]" -o -name "*.cc" |xargs -I {} clang-format -i --style=file {}
+
+cover:
+	gcovr -x -r . -o coverage.xml
+
+xml:
+	tests/rdfsa_test  --gtest_output=xml:rdfsa_test.xml
