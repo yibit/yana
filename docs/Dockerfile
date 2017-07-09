@@ -28,14 +28,14 @@ RUN set -ex \
 RUN set -ex \
 	&& rm -rf get-pip.py
 
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY run-yana.sh /usr/local/bin/
 
-RUN chmod 751 /usr/local/bin/docker-entrypoint.sh
+RUN chmod 751 /usr/local/bin/run-yana.sh
 
-RUN ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+RUN ln -s /usr/local/bin/run-yana.sh /run-yana.sh # backwards compat
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["run-yana.sh"]
 
 EXPOSE 9876
 
-# CMD ["docker-entrypoint.sh"]
+# CMD ["run-yana.sh"]
