@@ -13,7 +13,7 @@ usage()
     return 0    
 }
 
-make_run()
+_make_run()
 {
     if test -z $PROGS; then
         PROGS=`cat config.json |grep -E '[\t ]*".*":[\t ]*\{' |tr -d '"' |awk -F":" '{ print $1; }'`
@@ -21,27 +21,27 @@ make_run()
 
     sh $JSON -b < config.json |tr -d '[\t' |tr ']' '=' > .progs_conf
 
-    for p in $PROGS
-    do
-        MY_ARGS=`cat .progs_conf |grep "\"$p\"" |awk -F'","' ' { print $2; } ' |awk -F'"=' '{ print $1"="$2; }' |tr '\n' ' '`
-        if test "#$MY_ARGS" = "#"; then
-            echo "Error: $p dose not exist. !!"
+    for runner in $PROGS; do
+
+        MY_ARGS=`cat .progs_conf |grep "\"$runner\"" |awk -F'","' ' { print $2; } ' |awk -F'"=' '{ print $1"="$2; }' |tr '\n' ' '`
+        if test "#$MY_ARGS" == "#"; then
+            echo "Error: $TARGETDIR/$runner dose not exist. !!"
             exit 1
         fi
+
         echo "make $MY_ARGS" |sh
     done
 }
 
-run()
+_run()
 {
-    for f in $PROGS
-    do
-        echo "--------- run $f ---------"
-        $f
+    for runner in $PROGS; do
+        echo "--------- run $TARGETDIR/$runner ---------"
+        ./$runner
     done
 }
 
-make_clean()
+_make_clean()
 {
     rm -f .progs_conf
 }
@@ -64,11 +64,11 @@ fi
 
 cd $TARGETDIR
 
-make_run
+_make_run
 
-run
+_run
 
-make_clean
+_make_clean
 
 cd $WORKDIR
 

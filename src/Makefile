@@ -27,16 +27,14 @@ all: $(Static_lib)
 $(Static_lib): static_lib
 
 test: $(Static_lib) ../tools/mkrunner.sh
-	sh ../tools/mkrunner.sh ../tests
+	cd .. && sh tools/mkrunner.sh tests
 
 check: test
 
 sample: $(CC_bin) ../tools/mkrunner.sh
-	sh ../tools/mkrunner.sh ../samples
+	cd .. && sh tools/mkrunner.sh samples
 
 .PHONY: install uninstall clean
 
-
 include ./Makefile.inc
-
 
