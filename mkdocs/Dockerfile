@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-MAINTAINER YANA Docker Maintainers "guiqzhang@gmail.com"
+MAINTAINER YANA Docker Maintainers "yibitx@126.com"
 
 ENV YANA_VERSION 0.0.1
 
