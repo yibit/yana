@@ -29,3 +29,5 @@ else
     find . -type f |grep -v yana.sh |xargs grep -l yana |xargs -I {} sed -i "s/yana/$name/g" {}
 fi
 
+rm -f tools/yana.sh
+
