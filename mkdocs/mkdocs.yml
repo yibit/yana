@@ -11,7 +11,8 @@ pages:
 
 #theme: material 
 theme_dir: themes/material
-docs_dir: ../docs 
+docs_dir: ../docs
+edit_url: edit/master/docs
 site_dir: _site
 extra_css:
   - 'assets/stylesheets/extra.css'

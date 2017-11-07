@@ -12,7 +12,6 @@ if test $# -ne 1; then
     usage
 fi
 
-Y_SED="sed -i"
 UNAME=`uname -s`
 
 name=$1
