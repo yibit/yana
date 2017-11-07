@@ -1,9 +1,9 @@
 language:
-  - c
+  - cpp
 
 compiler:
-  - gcc
-  - clang
+  - g++
+  - clang++
 
 script: make && make check
 

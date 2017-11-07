@@ -9,6 +9,9 @@ all test check sample clean install uninstall: platform-deps
 platform-deps:
 	sh ./tools/configure.sh build_config.mk .
 
+doc:
+	cd mkdocs && $(MAKE)
+
 distclean:
 	rm -f src/*.o util/*.o src/*.a src/*.so src/*.sl src/*.a_* src/*.so_* src/*.sl_*
 	rm -f samples/*.o samples/*_sample samples/*_sample_*
