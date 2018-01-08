@@ -232,3 +232,15 @@ echo "ECHO_OPT=$ECHO_OPT" >> $OUTPUT
 echo "" >> $OUTPUT
 
 cat $OUTPUT
+
+HTTP_MODULE="SimpleHTTPServer"
+
+TEXT=`python -c 'import platform as plat; print (plat.python_version())'`
+VFLAG=`echo $TEXT |grep -E "2.\d.\d" |wc -l`
+
+if test $VFLAG -ne 1; then
+    HTTP_MODULE="http.server"
+fi
+
+echo "HTTP_MODULE=$HTTP_MODULE" >$PREFIX/mkdocs/build_config.mk
+

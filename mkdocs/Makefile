@@ -1,10 +1,12 @@
 
+include ./build_config.mk
+
 # build and run the whole website
 start: build
-	cd _site && python -m SimpleHTTPServer 9876
+	cd _site && python -m $(HTTP_MODULE) 9876
 
 down:
-	ps -ef |grep "SimpleHTTPServer 9876" |grep -v ".git" |awk '{ print $2; }' |xargs -I {} kill {}
+	sh down.sh
 
 build:
 	sh build.sh
