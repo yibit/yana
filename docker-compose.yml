@@ -1,10 +1,10 @@
-yana-site:
+yana:
   build: .
   dockerfile: Dockerfile
-#  image: yana-site
+#  image: yana
   restart: always
   ports:
-    - 9876:9876
+    - 8765:8765
   #environment:
   #  -
   #volumes:

@@ -31,3 +31,22 @@ cover:
 
 xml:
 	tests/rdfsa_test  --gtest_output=xml:rdfsa_test.xml
+
+docker build:
+	docker build -t yana .
+
+run:
+	docker run -d -p 8765:8765 -p 19221:19221 --name=yana yana
+
+inspect:
+	docker inspect yana
+
+rmi:
+	docker rmi -f yana
+
+stop:
+	docker stop yana
+
+start:
+	docker start yana
+

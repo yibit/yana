@@ -1,41 +1,52 @@
-FROM alpine:3.6
+FROM centos:7
 
-MAINTAINER YANA Docker Maintainers "yibitx@126.com"
+MAINTAINER yibit "yibitx@126.com"
 
-ENV YANA_VERSION 0.0.1
+ENV YANA_VERSION "0.0.1" 
 
-USER root
+RUN yum install -y openssh-server sudo
+
+RUN echo "UseDNS no" >> /etc/ssh/sshd_config 
+RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config 
+RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+RUN echo "SyslogFacility AUTHPRIV" >> /etc/ssh/sshd_config 
+RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config 
+
+RUN echo "root:_mlc_08u_@#_" |chpasswd
+
+RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
+RUN ssh-keygen -q -N "" -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key
+RUN ssh-keygen -q -N "" -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+RUN ssh-keygen -q -N "" -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+
+RUN mkdir /var/run/sshd
+
+# Install gcc, g++ and or all tools and dependenct libraries
+RUN set -ex \
+	&& yum install -q -y gcc gcc-c++ gdb \
+	clang clang-devel clang-analyzer \
+	make cmake automake autoconf autohead libtool \
+	libstdc++-docs \
+	libuuid-devel \
+	libzip-devel \
+	libiconv-devel \
+	openssl-devel \
+	pcre-devel \
+	ncurses-devel \
+	curl jq file wget uuid vim tree \
+	man-pages git-core \
+	svn lsof mlocate tcpdump \
+	crontab
+
+COPY . /yana
+
+WORKDIR /yana
 
 RUN set -ex \
-	&& apk add --no-cache --virtual .fetch-deps \
-    wget \
-    python \
-    && wget -O get-pip.py --no-check-certificate https://bootstrap.pypa.io/get-pip.py \
-    && python get-pip.py
+    && make \
+    && make test
 
-RUN adduser -h /home/yana -s /bin/bash yana -D
+EXPOSE 19221 8765
 
-COPY requirements.txt /home/yana/
+CMD ["/usr/sbin/sshd", "-p 19221", "-D"]
 
-RUN  mkdir -p /home/yana/_site
-
-COPY _site /home/yana/_site/
-
-RUN set -ex \
-    && cd /home/yana \
-    && pip install -r requirements.txt
-
-RUN set -ex \
-	&& rm -rf get-pip.py
-
-COPY run-yana.sh /usr/local/bin/
-
-RUN chmod 751 /usr/local/bin/run-yana.sh
-
-RUN ln -s /usr/local/bin/run-yana.sh /run-yana.sh # backwards compat
-
-ENTRYPOINT ["run-yana.sh"]
-
-EXPOSE 9876
-
-# CMD ["run-yana.sh"]
