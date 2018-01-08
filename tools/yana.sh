@@ -5,11 +5,12 @@ usage()
     echo "    $0 <name>   "
     echo "                "
 
-    exit 0
+    return 0
 }
 
 if test $# -ne 1; then
     usage
+    exit 1
 fi
 
 UNAME=`uname -s`
@@ -29,4 +30,6 @@ else
 fi
 
 rm -f tools/yana.sh
+
+git init
 
