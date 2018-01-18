@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2017 yana Authors. All rights reserved.
+# Copyright (c) 2013-2018 yana Authors. All rights reserved.
 # Use of this source code is governed by GPL license that can be
 # found in the LICENSE file. See the AUTHORS file for names of contributors.
 ###############################################################################
