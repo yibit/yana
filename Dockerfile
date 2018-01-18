@@ -35,7 +35,7 @@ RUN set -ex \
 	ncurses-devel \
 	curl jq file wget uuid vim tree \
 	man-pages git-core \
-	svn lsof mlocate tcpdump \
+	lsof mlocate tcpdump \
 	crontab
 
 COPY . /yana

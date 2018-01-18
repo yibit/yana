@@ -12,7 +12,7 @@ platform-deps:
 doc:
 	cd mkdocs && $(MAKE)
 
-distclean:
+distclean: platform-deps
 	rm -f src/*.o util/*.o src/*.a src/*.so src/*.sl src/*.a_* src/*.so_* src/*.sl_*
 	rm -f samples/*.o samples/*_sample samples/*_sample_*
 	rm -f third-party/gtest/src/*.o third-party/tap/*.o
@@ -22,6 +22,7 @@ distclean:
 	find . -name \*.gcno -type f |xargs rm -f
 	find . -name \*~ -type f |xargs rm -f
 	find . -name \*.bak -type f |xargs rm -f
+	cd mkdocs && $(MAKE) distclean
 
 format:
 	find include src tests -name "*.[h|c]" -o -name "*.cc" |xargs -I {} clang-format -i --style=file {}

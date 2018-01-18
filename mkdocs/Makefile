@@ -34,3 +34,7 @@ docker-down:
 
 clean:
 	rm -rf _site
+
+distclean: clean
+	rm -f build_config.mk
+
