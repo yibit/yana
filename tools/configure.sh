@@ -88,6 +88,11 @@ PLATFORM_SHARED_LDFLAGS="-shared -Wl,-soname -Wl,"
 PLATFORM_SHARED_CFLAGS=
 PLATFORM_SHARED_VERSIONED=true
 ECHO_OPT=
+DEBUG_OPT=
+
+if test $YANA_DEV -eq 1; then
+    DEBUG_OPT="-O0 -pg -fprofile-arcs -ftest-coverage"
+fi
 
 case "$TARGET_OS" in
     AIX)
@@ -106,7 +111,7 @@ case "$TARGET_OS" in
         CC=clang
         CXX=clang++
         PLATFORM=OS_MACOSX
-        COMMON_FLAGS="-DOS_MACOSX -Wall -fprofile-arcs -ftest-coverage"
+        COMMON_FLAGS="-DOS_MACOSX -Wall $DEBUG_OPT"
         PLATFORM_SHARED_EXT=dylib
         [ -z "$INSTALL_PATH" ] && INSTALL_PATH=`pwd`
         PLATFORM_SHARED_LDFLAGS="-dynamiclib -install_name $INSTALL_PATH/"
