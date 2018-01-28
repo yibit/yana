@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER yibit "yibitx@126.com"
+MAINTAINER YANA Docker Maintainers "yibitx@126.com"
 
 ENV YANA_VERSION "0.0.1" 
 

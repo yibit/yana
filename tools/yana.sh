@@ -23,11 +23,19 @@ rm -rf .git
 mv include/yana include/$name
 mv mkdocs/run-yana.sh mkdocs/run-$name.sh
 
-if test "x$UNAME" == "xDarwin"; then
-    find . -type f |grep -v yana.sh |xargs grep -l yana |xargs -I {} sed -i '' "s/yana/$name/g" {}
-else
-    find . -type f |grep -v yana.sh |xargs grep -l yana |xargs -I {} sed -i "s/yana/$name/g" {}
-fi
+replace()
+{
+    if test "x$UNAME" == "xDarwin"; then
+        find . -type f |grep -v yana.sh |xargs grep -l "$1" |xargs -I {} sed -i '' "s/$1/$2/g" {}
+    else
+        find . -type f |grep -v yana.sh |xargs grep -l $1 |xargs -I {} sed -i "s/$1/$2/g" {}
+    fi
+}
+
+XNAME=`echo $name |tr a-z A-Z`
+
+replace "yana" "$name"
+replace "YANA" "$XNAME"
 
 rm -f tools/yana.sh
 
