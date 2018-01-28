@@ -6,7 +6,7 @@ distdir="tests"
 if test $# -gt 1; then
 
     distdir="$1"
-    if test "x$2" == "xls"; then
+    if test "x$2" = "xls"; then
         ls -1 $distdir/*_test
         exit 0
     fi
@@ -19,12 +19,11 @@ if test $# -gt 1; then
 
 elif test $# -eq 1; then
 
-    if test "x$1" == "xls"; then
+    if test "x$1" = "xls"; then
         ls -1 $distdir/*_test
         exit 0
     fi
 
-    shift 1
     runners="$@"
     for runner in $runners; do
         make && sh tools/mkrunner.sh $distdir $runner
