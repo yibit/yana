@@ -87,11 +87,13 @@ PLATFORM_STATIC_EXT="a"
 PLATFORM_SHARED_LDFLAGS="-shared -Wl,-soname -Wl,"
 PLATFORM_SHARED_CFLAGS=
 PLATFORM_SHARED_VERSIONED=true
+OPTIMIZE_FLAGS=
 ECHO_OPT=
-DEBUG_OPT=
 
 if test $YANA_DEV -eq 1; then
-    DEBUG_OPT="-O0 -pg -fprofile-arcs -ftest-coverage"
+    OPTIMIZE_FLAGS="-O0 -pg -fprofile-arcs -ftest-coverage"
+else
+    OPTIMIZE_FLAGS="-O3"
 fi
 
 case "$TARGET_OS" in
@@ -111,7 +113,7 @@ case "$TARGET_OS" in
         CC=clang
         CXX=clang++
         PLATFORM=OS_MACOSX
-        COMMON_FLAGS="-DOS_MACOSX -Wall $DEBUG_OPT"
+        COMMON_FLAGS="-DOS_MACOSX -Wall $OPTIMIZE_FLAGS"
         PLATFORM_SHARED_EXT=dylib
         [ -z "$INSTALL_PATH" ] && INSTALL_PATH=`pwd`
         PLATFORM_SHARED_LDFLAGS="-dynamiclib -install_name $INSTALL_PATH/"
@@ -120,7 +122,7 @@ case "$TARGET_OS" in
         PLATFORM=OS_LINUX
         CXX_LD=$CXX
         CC_LD=$CC
-        COMMON_FLAGS="-O2 -pthread -DOS_LINUX -fPIC"        
+        COMMON_FLAGS="-pthread -DOS_LINUX -fPIC $OPTIMIZE_FLAGS"        
         PLATFORM_LDFLAGS="-lpthread -Wl,-E -ldl -rdynamic"
         PLATFORM_SHARED_CFLAGS="-fPIC"
         PLATFORM_LIBS="-ldl -lm"
@@ -213,7 +215,7 @@ if test "$CXX" = "g++"; then
     MEMCMP_FLAG="-fno-builtin-memcmp"
 fi
 
-COMMON_FLAGS="$COMMON_FLAGS $MEMCMP_FLAG"
+COMMON_FLAGS="$COMMON_FLAGS $MEMCMP_FLAG $OPTIMIZE_FLAGS"
 PLATFORM_CCFLAGS="$PLATFORM_CCFLAGS $COMMON_FLAGS"
 PLATFORM_CXXFLAGS="$PLATFORM_CXXFLAGS $COMMON_FLAGS"
 
