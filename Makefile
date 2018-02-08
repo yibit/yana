@@ -17,7 +17,7 @@ distclean: platform-deps
 	rm -f samples/*.o samples/*_sample samples/*_sample_*
 	rm -f third-party/gtest/src/*.o third-party/tap/*.o
 	rm -f tests/*.o tests/*_test tests/*_test_* third-party/tap/*_test build_config.mk
-	find . -name \*.xml -o -name \*.gcda -o -name \*.gcno —o -name \*~ -o -name \*.bak type f |xargs rm -f
+	find . -name \*.xml -o -name \*.gcda -o -name \*.gcno -o -name \*.bak -o -name \.DS_Store -o -name \*~ -type f |xargs rm -f
 	cd mkdocs && $(MAKE) distclean
 
 format:

@@ -75,6 +75,10 @@ if test -z "$TARGET_M"; then
     TARGET_M=`uname -m`
 fi
 
+if test -z "$YANA_DEV"; then
+    YANA_DEV=0
+fi
+
 ARFLAGS=rcu
 COMMON_FLAGS=
 CROSS_COMPILE=

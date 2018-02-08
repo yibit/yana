@@ -4,6 +4,7 @@
         "*.c": "c",
         "*.cc": "cpp",
         "*.inc": "makefile",
+        "*.install": "makefile",
         "*.mk": "makefile",
         "*.sh": "shellscript" 
     },

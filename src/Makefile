@@ -38,3 +38,5 @@ sample: $(CC_bin) ../tools/mkrunner.sh
 
 include ./Makefile.inc
 
+#include ./Makefile.install
+
