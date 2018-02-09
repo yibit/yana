@@ -17,7 +17,7 @@ distclean: platform-deps
 	rm -f samples/*.o samples/*_sample samples/*_sample_*
 	rm -f third-party/gtest/src/*.o third-party/tap/*.o
 	rm -f tests/*.o tests/*_test tests/*_test_* third-party/tap/*_test build_config.mk
-	find . -name \*.xml -o -name \*.gcda -o -name \*.gcno -o -name \*.bak -o -name \.DS_Store -o -name \*~ -type f |xargs rm -f
+	find . -name \*.xml -o -name \*.gcda -o -name \*.gcno -o -name \*.bak -o -name \.DS_Store -o -name \*~ -type f |xargs -I {} rm -f {}
 	cd mkdocs && $(MAKE) distclean
 
 format:
@@ -27,7 +27,7 @@ cover:
 	gcovr -x -r . -o coverage.xml
 
 xml:
-	tests/rdfsa_test  --gtest_output=xml:rdfsa_test.xml
+	tests/rdfsa_test --gtest_output=xml:rdfsa_test.xml
 
 docker build:
 	docker build -t yana .
