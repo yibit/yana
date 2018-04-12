@@ -2,12 +2,14 @@
 #include <gtest/gtest.h>
 #include <string.h>
 
-unsigned long fact(int n) {
-  if (n <= 0 || n == 1) {
-    return 1;
-  }
+unsigned long
+fact(int n)
+{
+    if (n <= 0 || n == 1) {
+        return 1;
+    }
 
-  return n * fact(n - 1);
+    return n * fact(n - 1);
 }
 
 TEST(fact, zero) { EXPECT_EQ(1, fact(0)); }

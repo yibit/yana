@@ -46,4 +46,3 @@ stop:
 
 start:
 	docker start yana
-

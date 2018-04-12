@@ -38,6 +38,10 @@ RUN set -ex \
 	lsof mlocate tcpdump \
 	crontab
 
+RUN set -ex \
+    && wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py \
+    && python get-pip.py
+
 COPY . /yana
 
 WORKDIR /yana
@@ -49,4 +53,3 @@ RUN set -ex \
 EXPOSE 19221 8765
 
 CMD ["/usr/sbin/sshd", "-p 19221", "-D"]
-

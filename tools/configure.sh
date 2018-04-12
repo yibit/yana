@@ -245,13 +245,10 @@ echo "" >> $OUTPUT
 cat $OUTPUT
 
 HTTP_MODULE="SimpleHTTPServer"
+PYVFLAG=`python --version 2>&1 |grep -E "2.[0-9]+.[0-9]+" |wc -l`
 
-TEXT=`python -c 'import platform as plat; print (plat.python_version())'`
-VFLAG=`echo $TEXT |grep -E "2.\d.\d" |wc -l`
-
-if test $VFLAG -ne 1; then
+if test $PYVFLAG -ne 1; then
     HTTP_MODULE="http.server"
 fi
 
 echo "HTTP_MODULE=$HTTP_MODULE" >$PREFIX/mkdocs/build_config.mk
-
