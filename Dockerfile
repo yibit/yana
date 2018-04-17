@@ -36,7 +36,7 @@ RUN set -ex \
 	curl jq file wget uuid vim tree \
 	man-pages git-core \
 	lsof mlocate tcpdump \
-	crontab
+	crontab python
 
 RUN set -ex \
     && wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py \
