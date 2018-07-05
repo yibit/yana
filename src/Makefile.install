@@ -28,4 +28,3 @@ uninstall:
 	cd $(INSTALL_BIN) && $(RM) $(RM_BIN)
 	cd $(INSTALL_INC) && $(RM) $(RM_INC) 
 	cd $(INSTALL_LIB) && $(RM) $(TO_LIB)
-

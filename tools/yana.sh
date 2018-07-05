@@ -40,4 +40,3 @@ replace "YANA" "$XNAME"
 rm -f tools/yana.sh
 
 git init
-

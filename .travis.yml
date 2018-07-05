@@ -6,4 +6,3 @@ compiler:
   - clang++
 
 script: make && make check
-

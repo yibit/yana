@@ -79,4 +79,3 @@ clean:
 	@echo $(ECHO_OPT) "$(CC) $< ... \c"
 	@$(CC) -o $@ -c $(CCFLAGS) $<
 	@echo OK
-

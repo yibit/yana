@@ -29,4 +29,3 @@ YIBIT_HEADERS=
 all $(CC_bin): cc_bin
 
 include ../src/Makefile.inc
-

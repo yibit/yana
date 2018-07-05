@@ -37,4 +37,3 @@ clean:
 
 distclean: clean
 	rm -f build_config.mk
-

@@ -34,4 +34,3 @@ else
     make && sh tools/mkrunner.sh $distdir
 
 fi
-
