@@ -3,7 +3,7 @@
 # found in the LICENSE file. See the AUTHORS file for names of contributors.
 ###############################################################################
 
-all test check sample clean install uninstall: platform-deps
+all test check sample doc clean install uninstall: platform-deps
 	cd src && $(MAKE) $@
 
 platform-deps:
