@@ -3,13 +3,13 @@
 # found in the LICENSE file. See the AUTHORS file for names of contributors.
 ###############################################################################
 
-all test check sample doc clean install uninstall: platform-deps
+all test check sample clean install uninstall: platform-deps
 	cd src && $(MAKE) $@
 
 platform-deps:
 	sh ./tools/configure.sh build_config.mk .
 
-doc:
+doc: platform-deps
 	cd mkdocs && $(MAKE)
 
 distclean: platform-deps
