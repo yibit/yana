@@ -22,10 +22,13 @@ RUN ssh-keygen -q -N "" -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
 RUN mkdir /var/run/sshd
 
 # Install gcc, g++ and or all tools and dependenct libraries
+# bind-utils -- nslookup dig host
+# net-tools -- ifconfig
+# sysstat -- pidstat pstack iostat
 RUN set -ex \
 	&& yum install -q -y gcc gcc-c++ gdb \
-	clang clang-devel clang-analyzer \
-	make cmake automake autoconf autohead libtool \
+	clang clang-devel clang-analyzer clang-format \
+	make cmake bison flex automake autoconf autohead libtool \
 	libstdc++-docs \
 	libuuid-devel \
 	libzip-devel \
@@ -33,10 +36,13 @@ RUN set -ex \
 	openssl-devel \
 	pcre-devel \
 	ncurses-devel \
-	curl jq file wget uuid vim tree \
+	curl jq file wget uuid vim tree doxygen \
 	man-pages git-core \
-	lsof mlocate tcpdump \
-	crontab python
+	svn lsof mlocate tcpdump \
+	crontabs bind-utils net-tools \
+	valgrind valgrind-devel \
+	gperftools gperftools-devel \
+	sysstat perf lsof
 
 RUN set -ex \
     && wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py \

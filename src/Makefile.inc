@@ -61,7 +61,6 @@ static_lib: $(static_lib_OBJS)
 	echo "--->>>>>>>>> MAKE OK <<<<<<<<<---"; \
 	fi
 
-
 .PHONY: clean
 
 clean:

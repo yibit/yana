@@ -107,4 +107,3 @@ int exit_status(void);
 
 
 #endif /* TAP_H_INCLUDED_ */
-
